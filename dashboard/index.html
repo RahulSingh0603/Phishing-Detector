@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard AI — Defense & Academic Analytics Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="brand">
+            <div class="brand-shield">🛡️</div>
+            <div>
+                <h1>PhishGuard AI</h1>
+                <span class="subtext">Real-Time Threat Intelligence & Heuristic DOM Shield</span>
+            </div>
+        </div>
+        <div class="nav-pills">
+            <button class="nav-btn active" data-tab="overview">Live Overview</button>
+            <button class="nav-btn" data-tab="academic">Academic Report & Metrics</button>
+            <button class="nav-btn" data-tab="dom-inspector">DOM & Heuristic Engine</button>
+        </div>
+        <div class="system-status">
+            <span class="pulse-dot"></span>
+            <span>Local Engine: <strong style="color: #38bdf8;">ACTIVE (Port 8000)</strong></span>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <!-- TAB 1: LIVE OVERVIEW -->
+        <section id="tab-overview" class="tab-pane active">
+            <!-- Summary Metric Cards -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-title">TOTAL URLS SCANNED</span>
+                    <div class="stat-value" id="stat-total">0</div>
+                    <span class="stat-hint">Across active browser tabs</span>
+                </div>
+                <div class="stat-card safe-card">
+                    <span class="stat-title">VERIFIED SAFE</span>
+                    <div class="stat-value" id="stat-safe">0</div>
+                    <span class="stat-hint">Zero threat indicators</span>
+                </div>
+                <div class="stat-card warn-card">
+                    <span class="stat-title">SUSPICIOUS SITES</span>
+                    <div class="stat-value" id="stat-suspicious">0</div>
+                    <span class="stat-hint">Elevated risk score</span>
+                </div>
+                <div class="stat-card danger-card">
+                    <span class="stat-title">PHISHING INTERCEPTED</span>
+                    <div class="stat-value" id="stat-malicious">0</div>
+                    <span class="stat-hint">High confidence threat match</span>
+                </div>
+                <div class="stat-card block-card">
+                    <span class="stat-title">BLOCKED NAVIGATION</span>
+                    <div class="stat-value" id="stat-blocked">0</div>
+                    <span class="stat-hint">Protected user navigation</span>
+                </div>
+            </div>
+
+            <!-- Visual Charts Grid -->
+            <div class="analytics-grid">
+                <div class="glass-panel">
+                    <div class="panel-header">
+                        <h3>Detection Distribution</h3>
+                        <span class="badge">Real-time Telemetry</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="distributionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass-panel">
+                    <div class="panel-header">
+                        <h3>Risk Severity Breakdown</h3>
+                        <span class="badge">Threat Class</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="riskBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Interceptions Table -->
+            <div class="glass-panel mt-4">
+                <div class="panel-header">
+                    <h3>Recent Threat Interceptions & Live Log</h3>
+                    <button class="refresh-btn" onclick="fetchHistory()">↻ Refresh Logs</button>
+                </div>
+                <div class="table-container">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Target URL</th>
+                                <th>Classification</th>
+                                <th>Risk Score</th>
+                                <th>Confidence</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body">
+                            <!-- Injected by app.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: ACADEMIC EVALUATION & VIVA METRICS -->
+        <section id="tab-academic" class="tab-pane">
+            <div class="academic-banner">
+                <div>
+                    <h2>🎓 Final Year Project Evaluation & Benchmark Metrics</h2>
+                    <p>Benchmarked on 10,000 live real-world phishing and legitimate URLs (PhishTank, OpenPhish & Tranco Top 1M).</p>
+                </div>
+                <div class="metrics-kpis">
+                    <div class="kpi-pill">
+                        <span class="kpi-label">MODEL ACCURACY</span>
+                        <span class="kpi-num" id="kpi-acc">95.60%</span>
+                    </div>
+                    <div class="kpi-pill">
+                        <span class="kpi-label">ROC-AUC SCORE</span>
+                        <span class="kpi-num" id="kpi-auc">0.9878</span>
+                    </div>
+                    <div class="kpi-pill">
+                        <span class="kpi-label">AVG LATENCY</span>
+                        <span class="kpi-num" id="kpi-latency">25.34 ms</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reports-gallery">
+                <div class="report-card">
+                    <div class="card-info">
+                        <h4>1. Confusion Matrix (Evaluation on 2,000 Unseen URLs)</h4>
+                        <p>Evaluates True Positives (Phishing caught) vs False Alarms. Highly accurate with minimal false alarms (973 True Negatives, 939 True Positives).</p>
+                    </div>
+                    <div class="img-frame">
+                        <img src="reports/confusion_matrix.png" alt="Confusion Matrix Graph" onerror="this.src='https://placehold.co/600x400?text=Run+generate_metrics.py'">
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="card-info">
+                        <h4>2. Receiver Operating Characteristic (ROC-AUC)</h4>
+                        <p>AUC = <strong>0.9878</strong> demonstrates near-perfect class separation capability between malicious attacks and benign browsing destinations.</p>
+                    </div>
+                    <div class="img-frame">
+                        <img src="reports/roc_curve.png" alt="ROC-AUC Graph" onerror="this.src='https://placehold.co/600x400?text=Run+generate_metrics.py'">
+                    </div>
+                </div>
+
+                <div class="report-card">
+                    <div class="card-info">
+                        <h4>3. Real-Time Inference Latency (Response Time in ms)</h4>
+                        <p>Mean latency is just <strong>25.34 ms</strong> (95th percentile under 66ms), ensuring instantaneous real-time blocking before navigation commits.</p>
+                    </div>
+                    <div class="img-frame">
+                        <img src="reports/latency_distribution.png" alt="Latency Distribution Graph" onerror="this.src='https://placehold.co/600x400?text=Run+generate_metrics.py'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: DOM & HEURISTIC ENGINE -->
+        <section id="tab-dom-inspector" class="tab-pane">
+            <div class="glass-panel">
+                <div class="panel-header">
+                    <h3>🛡️ Client-Side DOM & Form Spoofing Detection Architecture</h3>
+                    <span class="badge">Hybrid Defense Model</span>
+                </div>
+                <div class="dom-explainer-grid">
+                    <div class="explainer-card">
+                        <div class="card-icon">🔑</div>
+                        <h4>Password Input Interception</h4>
+                        <p>Scans rendered web pages for <code>&lt;input type="password"&gt;</code> elements. Alerts if a password form submits credentials over unencrypted HTTP or external off-site endpoints.</p>
+                    </div>
+
+                    <div class="explainer-card">
+                        <div class="card-icon">🎭</div>
+                        <h4>Brand Spoofing Detection</h4>
+                        <p>Matches brand imagery (Google, Facebook, Microsoft, Apple, PayPal) and login phrases on non-official hostnames, detecting zero-day cloned landing pages.</p>
+                    </div>
+
+                    <div class="explainer-card">
+                        <div class="card-icon">⚡</div>
+                        <h4>Dual-Layer Shield Flow</h4>
+                        <p><strong>Layer 1 (Pre-Navigation):</strong> XGBoost predicts probability via lexical URL tokens.<br>
+                        <strong>Layer 2 (Post-Render):</strong> Content Script dynamically audits form elements and hidden iframe overlays.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "accuracy": 0.956,
+    "roc_auc": 0.987777,
+    "mean_latency_ms": 25.34,
+    "p95_latency_ms": 65.92,
+    "true_positives": 939,
+    "true_negatives": 973,
+    "false_positives": 27,
+    "false_negatives": 61,
+    "total_test_samples": 2000
+}

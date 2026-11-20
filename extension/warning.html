@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Warning - PhishGuard AI</title>
+  <link rel="stylesheet" href="warning.css">
+</head>
+<body>
+  <div class="warning-container">
+    <div class="icon">⚠️</div>
+    <h1>PHISHGUARD AI</h1>
+    <h2 class="title-danger">DANGEROUS WEBSITE DETECTED</h2>
+    
+    <div class="score-box">
+      Risk Score: <span id="score-val">90</span>/100
+    </div>
+    
+    <div class="url-box" id="target-url"></div>
+
+    <p class="description">
+      This website may be attempting to:
+      <ul>
+        <li>Steal login credentials</li>
+        <li>Collect sensitive information</li>
+        <li>Redirect you to unsafe content</li>
+      </ul>
+    </p>
+
+    <div class="reasons-box">
+      <h3>Why we flagged it:</h3>
+      <ul id="reasons-list">
+      </ul>
+    </div>
+    
+    <div class="actions">
+      <button id="btn-back" class="btn btn-primary">GO BACK TO SAFETY</button>
+      <button id="btn-proceed" class="btn btn-danger">PROCEED ANYWAY</button>
+    </div>
+  </div>
+  
+  <script src="warning.js"></script>
+</body>
+</html>
