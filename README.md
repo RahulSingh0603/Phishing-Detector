@@ -103,7 +103,7 @@ pytest tests/
 - **Optional External APIs**: You can enable VirusTotal by adding an API key in the `.env` file.
 - **No Scraping**: Only the URL string is analyzed. Page content, cookies, and passwords are never collected.
 
-## 🔮 Future Improvements (Placement-Ready)
+## 🔮 Future Improvements
 
 - Expand the dataset to include hundreds of thousands of real-world benign and malicious URLs (e.g., from PhishTank).
 - Implement deep learning (e.g., 1D CNNs or LSTMs) on character-level URL representations.
